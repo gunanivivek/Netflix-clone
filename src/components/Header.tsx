@@ -4,9 +4,17 @@ import { Link, NavLink } from "react-router-dom";
 import HeaderRight from "./HeaderComp/RightHeader";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import AvatarMenu from "./HeaderComp/AvatarMenu";
+import { setLanguage } from "@/features/language/languageSlice";
+import type { RootState } from "@/store/ProStore";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+
+
 
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+  const currentLang = useAppSelector((state:RootState) => state.language.code);
+
   const [isScrolled, setIsScrolled] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -208,12 +216,11 @@ const Header = () => {
           {/* Language Dropdown */}
           <select
             className="bg-black/50 text-white px-3 py-1 rounded hover:bg-black/70 transition"
-            defaultValue="EN"
+            value={currentLang.toUpperCase()}
+            onChange={(e) =>dispatch(setLanguage(e.target.value))}
           >
             <option value="EN">English</option>
-            <option value="ES">Español</option>
-            <option value="FR">Français</option>
-            <option value="DE">Deutsch</option>
+            <option value="HI">Hindi</option>
           </select>
 
           {/* Sign In Button */}
