@@ -1,0 +1,35 @@
+@import "tailwindcss";
+/* Netflix Sans font faces */
+@font-face {
+  font-family: 'Netflix Sans';
+  src: url('/fonts/NetflixSans_W_Rg.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+  @font-face {
+    font-family: 'Netflix Sans';
+    src: url('/fonts/NetflixSans_W_Md.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+@font-face {
+  font-family: 'Netflix Sans';
+  src: url('/fonts/NetflixSans_W_Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Override Tailwind’s default font family globally */
+@layer base {
+  html {
+    font-family: 'Netflix Sans', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+@plugin "daisyui";
+
