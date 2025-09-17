@@ -83,12 +83,12 @@ const Login = () => {
           </fieldset>
           <p className="text-gray-400 text-base sm:text-[17px] font-semibold mt-1">
             {"New to Netflix? "}
-            <a
-              href="/signup"
+            <Link
+              to="/signup"
               className="text-white font-bold hover:text-gray-400 cursor-pointer"
             >
               Sign up now
-            </a>
+            </Link>
           </p>
           <p className="text-gray-400 font-semibold text-xs sm:text-sm mt-7 w-full">
             This page is protected by Google reCAPTCHA to ensure you're not a

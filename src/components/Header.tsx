@@ -9,8 +9,6 @@ import type { RootState } from "@/store/ProStore";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 
-
-
 const Header = () => {
   const dispatch = useAppDispatch();
   const currentLang = useAppSelector((state:RootState) => state.language.code);
