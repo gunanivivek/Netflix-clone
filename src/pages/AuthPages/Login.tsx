@@ -59,9 +59,7 @@ const Login = () => {
             OR
           </p>
           <p className="bg-[rgba(128,128,128,0.4)] w-full hover:bg-[rgba(128,128,128,0.2)] transition text-white text-center font-bold text-base sm:text-[17px] py-3 rounded-md mt-4">
-            <a href="/signup" className="text-white">
               Use a sign-in code
-            </a>
           </p>
           <p className="text-gray-400 mt-5 text-center">
             <Link
@@ -94,14 +92,14 @@ const Login = () => {
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot. <br />
             The information collected by Google reCAPTCHA is subject to the{" "}
-            <a href="/" className="text-blue-500">
-              Google Privacy Policy{" "}
-            </a>
+            <span className="text-blue-500">
+              Google Privacy Policy {"  "}
+            </span>
             and
-            <a href="/" className="text-blue-500 hover:cursor-pointer">
+            <span className="text-blue-500 hover:cursor-pointer">
               {" "}
               Terms of Service{" "}
-            </a>
+            </span>
             , and is used for providing, maintaining, and improving the reCAPTCHA
             service and for general security purposes (it is not used for
             personalised advertising by Google)

@@ -7,7 +7,7 @@ const SignUp = () => {
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,17 +58,11 @@ const SignUp = () => {
             OR
           </p>
           <p className="bg-[rgba(128,128,128,0.4)] w-full hover:bg-[rgba(128,128,128,0.2)] transition text-white text-center font-bold text-base sm:text-[17px] py-3 rounded-md mt-4">
-            <a href="/signup" className="text-white">
-              Use a sign-in code
-            </a>
+            Use a sign-in code
           </p>
           <fieldset className="w-full py-4 mt-4">
             <label className="flex items-center gap-2 text-base sm:text-[18px] font-semibold text-white">
-              <input
-                type="checkbox"
-                defaultChecked
-                className="checkbox"
-              />
+              <input type="checkbox" defaultChecked className="checkbox" />
               Remember me
             </label>
           </fieldset>
@@ -76,14 +70,17 @@ const SignUp = () => {
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot. <br />
             The information collected by Google reCAPTCHA is subject to the{" "}
-            <a href="/" className="text-blue-500">
+            <span className="text-blue-500">
               Google Privacy Policy{" "}
-            </a>
+            </span>
             and
-            <a href="/" className="text-blue-500"> Terms of Service </a>, and is used
-            for providing, maintaining, and improving the reCAPTCHA service and
-            for general security purposes (it is not used for personalised
-            advertising by Google)
+            <span className="text-blue-500">
+              {" "}
+              Terms of Service{" "}
+            </span>
+            , and is used for providing, maintaining, and improving the
+            reCAPTCHA service and for general security purposes (it is not used
+            for personalised advertising by Google)
           </p>
         </div>
       </div>
