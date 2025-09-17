@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Header from "../components/Header"
 import { useAppSelector } from "@/hooks/useAppSelector"
+import Footer from "@/components/Footer"
 
 const Layout = () => {
   const { user } = useAppSelector((state) => state.auth)
@@ -25,6 +26,7 @@ const Layout = () => {
             <main>
               <Outlet />
             </main>
+            <Footer />
           </div>
         </div>
       ) : (
@@ -35,6 +37,7 @@ const Layout = () => {
             <main>
               <Outlet />
             </main>
+            <Footer />
           </div>
         </div>
       )}

@@ -13,7 +13,7 @@ const Browse:React.FC = () => {
         title="War 2"
         description="War 2 is an action spy film where former agent Kabir is declared a traitor by India, and a ruthless new agent, Vikram, is sent to hunt him down as both heroes face a powerful, shadowy organization threatening the nation's stability. "
       />
-      <div className="mt-5 ml-10 mr-10">
+      <div className="mt-5 ml-10 mr-10 space-y-8">
         <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
         <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
         <Row title="Now playing" fetchUrl={requests.fetchNowPlaying} />

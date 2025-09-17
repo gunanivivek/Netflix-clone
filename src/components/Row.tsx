@@ -57,7 +57,7 @@ const Row: React.FC<Props> = ({ title, fetchUrl }) => {
   };
 
   return (
-    <div className="mb-12">
+    <div className="">
       <h2 className="text-white text-xl font-bold mb-3 px-4">{title}</h2>
 
       <div className="relative group px-4">
