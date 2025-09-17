@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import HeaderRight from "./HeaderComp/RightHeader";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import AvatarMenu from "./HeaderComp/AvatarMenu";
@@ -8,16 +8,15 @@ import { setLanguage } from "@/features/language/languageSlice";
 import type { RootState } from "@/store/ProStore";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 
-
 const Header = () => {
+  const location = useLocation();
   const dispatch = useAppDispatch();
-  const currentLang = useAppSelector((state:RootState) => state.language.code);
+  const currentLang = useAppSelector((state: RootState) => state.language.code);
 
   const [isScrolled, setIsScrolled] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -55,7 +54,7 @@ const Header = () => {
         {/* Hamburger for mobile */}
         {user && (
           <button
-            className="sm:hidden ml-2 text-white focus:outline-none"
+            className="lg:hidden ml-2 text-white focus:outline-none"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Open menu"
           >
@@ -68,75 +67,80 @@ const Header = () => {
         )}
 
         {/* Nav Links (desktop only) */}
-        {user && (
-          <nav className="hidden sm:flex ml-5 gap-6 mb-2">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-lg font-sans transition ${
-                  isActive ? "font-bold" : " text-white hover:text-gray-400"
-                }`
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/tvshows"
-              className={({ isActive }) =>
-                `text-lg font-sans transition ${
-                  isActive ? "font-bold" : " text-white hover:text-gray-400"
-                }`
-              }
-            >
-              TV Shows
-            </NavLink>
-            <NavLink
-              to="/movies"
-              className={({ isActive }) =>
-                `text-lg font-sans transition ${
-                  isActive ? "font-bold" : " text-white hover:text-gray-400"
-                }`
-              }
-            >
-              Movies
-            </NavLink>
-            <NavLink
-              to="/new-popular"
-              className={({ isActive }) =>
-                `text-lg font-sans transition ${
-                  isActive ? "font-bold" : " text-white hover:text-gray-400"
-                }`
-              }
-            >
-              New & Popular
-            </NavLink>
-            <NavLink
-              to="/my-list"
-              className={({ isActive }) =>
-                `text-lg font-sans transition ${
-                  isActive ? "font-bold" : " text-white hover:text-gray-400"
-                }`
-              }
-            >
-              My List
-            </NavLink>
-            <NavLink
-              to="/browse-by-lang"
-              className={({ isActive }) =>
-                `text-lg font-sans transition ${
-                  isActive ? "font-bold" : " text-white hover:text-gray-400"
-                }`
-              }
-            >
-              Browse by Language
-            </NavLink>
-          </nav>
-        )}
+        {location.pathname !== "/membership" &&
+          location.pathname !== "/overview" &&
+          location.pathname !== "/devices" &&
+          location.pathname !== "/profile" &&
+          location.pathname !== "/security" &&
+          user && (
+            <nav className="hidden lg:flex ml-5 gap-6 mb-2">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `text-lg font-sans transition ${
+                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                  }`
+                }
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/tvshows"
+                className={({ isActive }) =>
+                  `text-lg font-sans transition ${
+                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                  }`
+                }
+              >
+                TV Shows
+              </NavLink>
+              <NavLink
+                to="/movies"
+                className={({ isActive }) =>
+                  `text-lg font-sans transition ${
+                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                  }`
+                }
+              >
+                Movies
+              </NavLink>
+              <NavLink
+                to="/new-popular"
+                className={({ isActive }) =>
+                  `text-lg font-sans transition ${
+                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                  }`
+                }
+              >
+                New & Popular
+              </NavLink>
+              <NavLink
+                to="/my-list"
+                className={({ isActive }) =>
+                  `text-lg font-sans transition ${
+                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                  }`
+                }
+              >
+                My List
+              </NavLink>
+              <NavLink
+                to="/browse-by-lang"
+                className={({ isActive }) =>
+                  `text-lg font-sans transition ${
+                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                  }`
+                }
+              >
+                Browse by Language
+              </NavLink>
+            </nav>
+          )}
       </div>
 
       {/* Hamburger Menu Drawer (mobile only) */}
       {user && menuOpen && (
-        <div className="fixed inset-0 z-30 bg-black/90 flex flex-col items-center justify-start pt-24 sm:hidden transition">
+        <div className="fixed inset-0 z-30 bg-black/90 flex flex-col items-center justify-start pt-24 lg:hidden transition">
           <nav className="flex flex-col gap-6 w-full items-center">
             <NavLink
               to="/"
@@ -215,7 +219,7 @@ const Header = () => {
           <select
             className="bg-black/50 text-white px-3 py-1 rounded hover:bg-black/70 transition"
             value={currentLang.toUpperCase()}
-            onChange={(e) =>dispatch(setLanguage(e.target.value))}
+            onChange={(e) => dispatch(setLanguage(e.target.value))}
           >
             <option value="EN">English</option>
             <option value="HI">Hindi</option>

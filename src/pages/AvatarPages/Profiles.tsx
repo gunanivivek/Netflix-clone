@@ -4,13 +4,15 @@ import Sidebar from "@/components/Sidebar";
 
 const Profiles: React.FC = () => {
   return (
-    <div className="w-full min-h-screen bg-[#f9f9f9] flex flex-col sm:flex-row justify-center py-5 sm:py-20 px-4">
+    <div className="w-full min-h-screen bg-[#f9f9f9] flex flex-col lg:flex-row justify-center py-5 md:py-10 lg:py-20 px-4 sm:px-6 md:px-8">
       <Sidebar />
-      <div className="ml-5 w-full max-w-3xl space-y-8 mt-4">
+      <div className="w-full lg:w-3/4 lg:ml-8 max-w-4xl space-y-8 mt-4">
         {/* Account Heading */}
         <div>
-          <h1 className="text-4xl font-bold text-black">Profiles</h1>
-          <p className="text-black font-sans text-lg">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black">
+            Profiles
+          </h1>
+          <p className="text-black font-sans text-sm sm:text-base md:text-lg">
             Parental Controls and Permissions
           </p>
         </div>
@@ -113,7 +115,8 @@ const Profiles: React.FC = () => {
               </div>
               <ArrowRight className="w-4 h-4 text-gray-500" />
             </div>
-            <button className="border-1 my-5 mx-7.5 border-gray-300 bg-gray-200 rounded-md px-4 py-2 text-black font-bold text-lg w-11/12 justify-center text-center hover:bg-gray-300">
+            <button className="border-1 my-5 mx-7.5 border-gray-300 bg-gray-200 rounded-md px-4 py-2 text-black font-bold text-base sm:text-lg w-full sm:w-11/12 justify-center text-center hover:bg-gray-300">
+              {" "}
               Add Profile
             </button>
             <p className="text-gray-600 font-semibold text-base text-center mb-5">
