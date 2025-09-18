@@ -33,7 +33,7 @@ const Header = () => {
     setTimeout(() => {
       navigate("/")
       setNavLoading(false)
-    }, 300) 
+    }, 400) 
   }
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 sm:px-10 py-4 sm:py-6 z-30 transition-colors duration-300 ${
-        isScrolled || location.pathname === "/my-list"
+        isScrolled
           ? "bg-black"
           : "bg-transparent"
       }`}

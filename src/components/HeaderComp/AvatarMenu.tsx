@@ -1,9 +1,27 @@
 import { logout } from "@/features/auth/authSlice";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AvatarMenu = () => {
   const dispatch = useAppDispatch();
+
+  const handleLogout = async() => {
+    const resultAction = await dispatch(logout());
+    try{
+      if(logout.fulfilled.match(resultAction)){
+        toast.success("Logged out successfully")
+      } else{
+        toast.error("Error while logging out")
+      }
+    } catch (err) {
+          const errorMsg =
+            err instanceof Error
+              ? err.message
+              : "Something went wrong. Please try again.";
+          toast.error(errorMsg);
+        }
+  }
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -99,7 +117,7 @@ const AvatarMenu = () => {
         </li>
         <li>
           <div className="mt-2 flex justify-center text-center border border-t-2 border-gray-600 font-medium text-base">
-            <button onClick={() => dispatch(logout())}>
+            <button onClick={handleLogout}>
               Sign Out of Netflix
             </button>
           </div>

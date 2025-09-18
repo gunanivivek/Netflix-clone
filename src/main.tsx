@@ -11,13 +11,27 @@ import AppRoutes from "./routes/AppRoutes.tsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <AuthListener>
-          <ToastContainer position="top-right" autoClose={2000} />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            toastClassName={
+              () =>
+                "relative flex p-4 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer bg-gray-900 text-white " +
+                "sm:max-w-md max-w-[90vw]" // ⬅️ responsive widths
+            }
+          />
           <AppRoutes />
         </AuthListener>
       </BrowserRouter>
