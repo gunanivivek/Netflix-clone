@@ -3,9 +3,12 @@ interface LanguageState {
     code: string;
 }
 
+const savedLanguage = localStorage.getItem("language");
+
+
 const initialState: LanguageState = {
-    code: "en",
-}
+    code: savedLanguage ? savedLanguage.toLowerCase() : "en",
+};
 
 const LanguageSlice = createSlice({
     name: "language",
@@ -13,6 +16,7 @@ const LanguageSlice = createSlice({
     reducers: {
         setLanguage: (state, action: PayloadAction<string>) => {
             state.code = action.payload.toLowerCase();
+            localStorage.setItem("language", state.code);
         }
     }
 })

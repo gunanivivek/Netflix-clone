@@ -69,7 +69,7 @@ const Row: React.FC<Props> = ({ title, fetchUrl }) => {
                        w-10 sm:w-14 h-[140px] 
                        bg-gradient-to-r from-black/90 to-transparent 
                        flex items-center justify-center rounded-l-md
-                       opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition"
+                       opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition hover:cursor-pointer"
           >
             <ChevronLeft className="text-white" size={24} />
           </button>
@@ -127,7 +127,7 @@ const Row: React.FC<Props> = ({ title, fetchUrl }) => {
                        w-10 sm:w-14 h-[140px] 
                        bg-gradient-to-l from-black/90 to-transparent 
                        flex items-center justify-center rounded-r-md
-                        opacity-100 sm:opacity-0  sm:group-hover:opacity-100 transition"
+                        opacity-100 sm:opacity-0  sm:group-hover:opacity-100 transition hover:cursor-pointer"
           >
             <ChevronRight className="text-white" size={24} />
           </button>

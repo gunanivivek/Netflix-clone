@@ -61,7 +61,7 @@ const TrendingComp:React.FC = () => {
             opts={{ align: "start", loop: false }}
             className="flex items-center w-full"
           >
-            <CarouselPrevious className="flex h-72 w-14 items-center justify-center rounded-r-full bg-black/40 hover:bg-black transition shrink-0 focus:outline-none focus:ring-0 border-none">
+            <CarouselPrevious className="flex h-72 w-14 items-center justify-center rounded-r-full bg-black/40 hover:bg-black transition shrink-0 focus:outline-none focus:ring-0 border-none hover:cursor-pointer">
               <ChevronLeft size={32} color="white" />
             </CarouselPrevious>
 
@@ -97,7 +97,7 @@ const TrendingComp:React.FC = () => {
             </CarouselContent>
 
             {/* Next Button */}
-            <CarouselNext className="flex h-72 w-14 items-center justify-center rounded-l-full bg-black/40 hover:bg-black transition shrink-0 focus:outline-none focus:ring-0 border-none">
+            <CarouselNext className="flex h-72 w-14 items-center justify-center rounded-l-full bg-black/40 hover:bg-black transition shrink-0 focus:outline-none focus:ring-0 border-none hover:cursor-pointer">
               <ChevronRight size={32} color="white" />
             </CarouselNext>
           </Carousel>
