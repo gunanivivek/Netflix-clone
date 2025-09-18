@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { signup } from "@/features/auth/authSlice";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +12,22 @@ const SignUp = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(signup({ email, password }));
+    try {
+      const resultAction = dispatch(signup({ email, password }));
+      if (signup.fulfilled.match(resultAction)) {
+        toast.success("Signup successful");
+      } else if (password.length <= 6) {
+        toast.error("Password length should be greater than 6");
+      } else {
+        toast.error("Invalid email or password. New Account? Sign Up");
+      }
+    } catch (err) {
+      const errorMsg =
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again.";
+      toast.error(errorMsg);
+    }
   };
 
   return (
@@ -70,17 +86,12 @@ const SignUp = () => {
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot. <br />
             The information collected by Google reCAPTCHA is subject to the{" "}
-            <span className="text-blue-500">
-              Google Privacy Policy{" "}
-            </span>
+            <span className="text-blue-500">Google Privacy Policy </span>
             and
-            <span className="text-blue-500">
-              {" "}
-              Terms of Service{" "}
-            </span>
-            , and is used for providing, maintaining, and improving the
-            reCAPTCHA service and for general security purposes (it is not used
-            for personalised advertising by Google)
+            <span className="text-blue-500"> Terms of Service </span>, and is
+            used for providing, maintaining, and improving the reCAPTCHA service
+            and for general security purposes (it is not used for personalised
+            advertising by Google)
           </p>
         </div>
       </div>

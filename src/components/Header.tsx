@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import HeaderRight from "./HeaderComp/RightHeader";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import AvatarMenu from "./HeaderComp/AvatarMenu";
@@ -10,6 +10,8 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate()
+  const [navLoading, setNavLoading] = useState(false)
   const dispatch = useAppDispatch();
   const currentLang = useAppSelector((state: RootState) => state.language.code);
 
@@ -25,6 +27,15 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogoClick = () => {
+    if (location.pathname === "/home" || location.pathname === "/browse") return
+    setNavLoading(true)
+    setTimeout(() => {
+      navigate("/")
+      setNavLoading(false)
+    }, 300) 
+  }
+
   useEffect(() => {
     if (!menuOpen) return;
     const closeMenu = () => setMenuOpen(false);
@@ -36,20 +47,33 @@ const Header = () => {
     };
   }, [menuOpen]);
 
+  if (navLoading) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-black text-white">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    )
+  }
+
   return (
     <header
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 sm:px-10 py-4 sm:py-6 z-30 transition-colors duration-300 ${
-        isScrolled ? "bg-black" : "bg-transparent"
+        isScrolled || location.pathname === "/my-list"
+          ? "bg-black"
+          : "bg-transparent"
       }`}
     >
       {/* Left: Logo & Hamburger */}
       <div className="flex items-center flex-shrink-0 gap-2 sm:gap-8">
         {/* Netflix Logo */}
-        <img
-          src="/Netflix_2015_logo.svg.png"
-          alt="Netflix Logo"
-          className="h-7 sm:h-9 w-auto ml-0"
-        />
+        
+          <img
+            src="/Netflix_2015_logo.svg.png"
+            alt="Netflix Logo"
+            className="h-7 sm:h-9 w-auto ml-0"
+            onClick={handleLogoClick}
+          />
+        
 
         {/* Hamburger for mobile */}
         {user && (

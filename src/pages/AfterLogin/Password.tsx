@@ -6,6 +6,7 @@ import {
   EmailAuthProvider,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Password: React.FC = () => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -73,8 +74,8 @@ const Password: React.FC = () => {
           </h4>
 
           <form onSubmit={handlePasswordChange} className="space-y-6">
-            {error && <p className="text-red-500">{error}</p>}
-            {success && <p className="text-green-500">{success}</p>}
+            {error && toast.error(`${error}`)}
+            {success && toast.success(`${error}`)}
 
             <div>
               <input

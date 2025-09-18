@@ -3,6 +3,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { login } from "@/features/auth/authSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -10,9 +11,24 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(login({ email, password }));
+    try {
+      
+      const resultAction = await dispatch(login({ email, password }));
+
+      if (login.fulfilled.match(resultAction)) {
+        toast.success("Login successful");
+      } else {
+        toast.error("Invalid email or password. New Account? Sign Up");
+      }
+    } catch (err) {
+      const errorMsg =
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again.";
+      toast.error(errorMsg);
+    }
   };
 
   return (
@@ -59,7 +75,7 @@ const Login = () => {
             OR
           </p>
           <p className="bg-[rgba(128,128,128,0.4)] w-full hover:bg-[rgba(128,128,128,0.2)] transition text-white text-center font-bold text-base sm:text-[17px] py-3 rounded-md mt-4">
-              Use a sign-in code
+            Use a sign-in code
           </p>
           <p className="text-gray-400 mt-5 text-center">
             <Link
@@ -71,11 +87,7 @@ const Login = () => {
           </p>
           <fieldset className="w-full py-4 mt-4">
             <label className="flex items-center gap-2 text-base sm:text-[18px] font-semibold text-white">
-              <input
-                type="checkbox"
-                defaultChecked
-                className="checkbox"
-              />
+              <input type="checkbox" defaultChecked className="checkbox" />
               Remember me
             </label>
           </fieldset>
@@ -92,17 +104,15 @@ const Login = () => {
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot. <br />
             The information collected by Google reCAPTCHA is subject to the{" "}
-            <span className="text-blue-500">
-              Google Privacy Policy {"  "}
-            </span>
+            <span className="text-blue-500">Google Privacy Policy {"  "}</span>
             and
             <span className="text-blue-500 hover:cursor-pointer">
               {" "}
               Terms of Service{" "}
             </span>
-            , and is used for providing, maintaining, and improving the reCAPTCHA
-            service and for general security purposes (it is not used for
-            personalised advertising by Google)
+            , and is used for providing, maintaining, and improving the
+            reCAPTCHA service and for general security purposes (it is not used
+            for personalised advertising by Google)
           </p>
         </div>
       </div>

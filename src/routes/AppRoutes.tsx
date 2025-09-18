@@ -19,6 +19,7 @@ import Profiles from "@/pages/AvatarPages/Profiles";
 import Password from "@/pages/AfterLogin/Password";
 import ForgotPassword from "@/pages/AuthPages/ForgotPassword";
 
+
 const AppRoutes: React.FC = () => {
   const { user, loading } = useAppSelector((state) => state.auth);
 
@@ -26,7 +27,7 @@ const AppRoutes: React.FC = () => {
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center bg-black text-white">
-        <span className="loading loading-dots loading-lg"></span>
+        <span className="loading loading-spinner loading-xl"></span>
       </div>
     );
   }
