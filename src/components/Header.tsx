@@ -94,6 +94,7 @@ const Header = () => {
           location.pathname !== "/devices" &&
           location.pathname !== "/profile" &&
           location.pathname !== "/security" &&
+          location.pathname !== "/help" &&
           user && (
             <nav className="hidden lg:flex ml-5 gap-6 mb-2">
               <NavLink
