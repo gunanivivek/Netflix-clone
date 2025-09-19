@@ -45,7 +45,7 @@ const BrowseByLang: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 mr-0 sm:mr-5 w-full sm:w-auto">
           {/* Preferences */}
           <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-            <h3 className="text-base sm:text-lg font-light whitespace-nowrap">
+            <h3 className="text-base sm:text-lg text-white font-light whitespace-nowrap">
               Select your preferences
             </h3>
             <select
@@ -78,7 +78,7 @@ const BrowseByLang: React.FC = () => {
           </div>
           {/* Sort By */}
           <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-            <h3 className="text-base sm:text-lg font-light whitespace-nowrap">
+            <h3 className="text-base sm:text-lg text-white font-light whitespace-nowrap">
               Sort by
             </h3>
             <select

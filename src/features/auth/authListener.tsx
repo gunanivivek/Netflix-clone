@@ -13,10 +13,19 @@ const AuthListener = ({ children }: AuthListenerProps) => {
 
   useEffect(() => {
     dispatch(setLoading(true));
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      dispatch(setUser(user));
+      if (user) {
+        // ✅ transform into plain object
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(setUser({ uid, email, displayName, photoURL }));
+      } else {
+        dispatch(setUser(null));
+      }
+
       dispatch(setLoading(false));
     });
+
     return () => unsubscribe();
   }, [dispatch]);
 

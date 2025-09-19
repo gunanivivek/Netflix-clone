@@ -676,7 +676,7 @@ export default function MoreReasons() {
     <section className="my-10 flex justify-center">
       {/* Wrapper to center + control width */}
       <div className="w-full max-w-[1300px] mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-300 mb-4">
           {lang === "en" ? "More reasons to join" : "जुड़ने के और कारण"}
         </h2>
 
@@ -690,7 +690,7 @@ export default function MoreReasons() {
               >
                 {/* Title + Description */}
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-3">
+                  <h3 className="text-xl md:text-2xl text-slate-300 font-bold mb-3">
                     {reason.title[lang]}
                   </h3>
                   <p className="text-base md:text-lg font-medium text-slate-300 leading-relaxedd">

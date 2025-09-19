@@ -10,17 +10,17 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (password.length <= 6) {
+      toast.error("Password length should be greater than 6");
+      return;
+    }
+
     try {
-      const resultAction = dispatch(signup({ email, password }));
-      if (signup.fulfilled.match(resultAction)) {
-        toast.success("Signup successful");
-      } else if (password.length <= 6) {
-        toast.error("Password length should be greater than 6");
-      } else {
-        toast.error("Invalid email or password. New Account? Sign Up");
-      }
+      await dispatch(signup({ email, password })).unwrap();
+      toast.success("Signup successful ✅");
     } catch (err) {
       const errorMsg =
         err instanceof Error

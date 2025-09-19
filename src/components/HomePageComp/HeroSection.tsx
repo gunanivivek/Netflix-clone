@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
         placeholder={lang === "en" ? "Email address" : "ईमेल पता"}
         className="flex-1 px-4 py-3 sm:py-4 text-base sm:text-lg rounded-md bg-transparent border border-white text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white w-full sm:w-[60%]"
       />
-      <button className="px-6 py-3 sm:py-4 bg-red-600 hover:bg-red-700 text-base sm:text-lg font-semibold text-white rounded-md transition w-full sm:w-auto">
+      <button className="px-6 py-3 sm:py-4 bg-red-600 hover:bg-red-700 hover:cursor-pointer text-base sm:text-lg font-semibold text-white rounded-md transition w-full sm:w-auto">
         {lang === "en" && "Get Started"}
         {lang === "hi" && "शुरू करें"}
       </button>

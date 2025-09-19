@@ -63,7 +63,7 @@ const Header = () => {
       }`}
     >
       {/* Left: Logo & Hamburger */}
-      <div className="flex items-center flex-shrink-0 gap-2 sm:gap-8">
+      <div className="flex items-center flex-shrink-0 hover:cursor-pointer   gap-2 sm:gap-8">
         {/* Netflix Logo */}
 
         <img
@@ -101,7 +101,7 @@ const Header = () => {
                 to="/"
                 className={({ isActive }) =>
                   `text-lg font-sans transition ${
-                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                    isActive ? "font-bold " : " text-white hover:text-gray-400"
                   }`
                 }
               >
@@ -111,7 +111,7 @@ const Header = () => {
                 to="/tvshows"
                 className={({ isActive }) =>
                   `text-lg font-sans transition ${
-                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                    isActive ? "font-bold text-gray-800" : " text-white hover:text-gray-400"
                   }`
                 }
               >
@@ -121,7 +121,7 @@ const Header = () => {
                 to="/movies"
                 className={({ isActive }) =>
                   `text-lg font-sans transition ${
-                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                    isActive ? "font-bold text-gray-800" : " text-white hover:text-gray-400"
                   }`
                 }
               >
@@ -131,7 +131,7 @@ const Header = () => {
                 to="/new-popular"
                 className={({ isActive }) =>
                   `text-lg font-sans transition ${
-                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                    isActive ? "font-bold text-gray-800" : " text-white hover:text-gray-400"
                   }`
                 }
               >
@@ -141,7 +141,7 @@ const Header = () => {
                 to="/my-list"
                 className={({ isActive }) =>
                   `text-lg font-sans transition ${
-                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                    isActive ? "font-bold text-gray-800" : " text-white hover:text-gray-400"
                   }`
                 }
               >
@@ -151,7 +151,7 @@ const Header = () => {
                 to="/browse-by-lang"
                 className={({ isActive }) =>
                   `text-lg font-sans transition ${
-                    isActive ? "font-bold" : " text-white hover:text-gray-400"
+                    isActive ? "font-bold text-gray-800" : " text-white hover:text-gray-400"
                   }`
                 }
               >
@@ -240,7 +240,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           {/* Language Dropdown */}
           <select
-            className="bg-black/50 text-white px-3 py-1 rounded hover:bg-black/70 transition"
+            className="bg-black/50 text-white px-3 py-1 rounded hover:cursor-pointer hover:bg-black/70 transition"
             value={currentLang.toUpperCase()}
             onChange={(e) => dispatch(setLanguage(e.target.value))}
           >

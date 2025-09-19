@@ -16,7 +16,7 @@ const Home: React.FC = () => {
         <MoreReasons />
         <FAQSection />
         <div className="flex flex-col items-center justify-center mt-5 w-full gap-6 px-4 sm:px-6">
-          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl font-light max-w-2xl leading-relaxed">
+          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl font-light text-white max-w-2xl leading-relaxed">
             {lang === "en" &&
               "Ready to watch? Enter your email to create or restart your membership."}
             {lang === "hi" &&
@@ -29,7 +29,7 @@ const Home: React.FC = () => {
               placeholder="Email address"
               className="flex-1 w-full sm:w-auto px-4 py-3 sm:py-4 border border-gray-500 text-base sm:text-lg lg:text-xl rounded-md bg-gray-950 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white"
             />
-            <button className="flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 lg:px-8 py-3 sm:py-4 bg-red-600 hover:bg-red-700 text-base sm:text-lg lg:text-xl font-medium text-white rounded-md transition whitespace-nowrap">
+            <button className="flex items-center hover:cursor-pointer justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 lg:px-8 py-3 sm:py-4 bg-red-600 hover:bg-red-700 text-base sm:text-lg lg:text-xl font-medium text-white rounded-md transition whitespace-nowrap">
               {lang === "en" && "Get Started"}
               {lang === "hi" && "शुरू करें"}
               <svg
