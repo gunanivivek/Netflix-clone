@@ -25,7 +25,7 @@ import Help from "@/pages/AvatarPages/Help";
 const AppRoutes: React.FC = () => {
   const { user, loading } = useAppSelector((state) => state.auth);
 
-  // ⚡ Block routing entirely while loading
+  
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center bg-black text-white">

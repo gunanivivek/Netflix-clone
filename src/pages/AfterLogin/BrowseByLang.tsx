@@ -30,6 +30,8 @@ const BrowseByLang: React.FC = () => {
   const [preference, setPreference] = useState("Original Languages");
   const [suggestion, setSuggestion] = useState("Suggestions for you");
 
+  
+
   return (
     <div className="bg-black min-h-screen px-4 sm:px-6 lg:px-10 py-6">
       {/* Header Row: Title + Dropdowns */}
@@ -65,7 +67,7 @@ const BrowseByLang: React.FC = () => {
               value={selectedLang}
               onChange={(e) => setSelectedLang(e.target.value)}
               className="w-full sm:w-auto px-2 py-1 bg-black text-white text-sm sm:text-base outline outline-white font-medium min-w-[180px]"
-              size={1} // keeps it dropdown style
+              size={1} 
             >
               {languages.map((lang) => (
                 <option key={lang.code} value={lang.code}>
@@ -94,7 +96,7 @@ const BrowseByLang: React.FC = () => {
         </div>
       </div>
 
-      {/* Rows (already responsive) */}
+      
       <div className="space-y-8">
         <Row
           title="Top Rated"
