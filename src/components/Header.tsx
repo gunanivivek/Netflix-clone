@@ -10,8 +10,8 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 const Header = () => {
   const location = useLocation();
-  const navigate = useNavigate()
-  const [navLoading, setNavLoading] = useState(false)
+  const navigate = useNavigate();
+  const [navLoading, setNavLoading] = useState(false);
   const dispatch = useAppDispatch();
   const currentLang = useAppSelector((state: RootState) => state.language.code);
 
@@ -28,13 +28,14 @@ const Header = () => {
   }, []);
 
   const handleLogoClick = () => {
-    if (location.pathname === "/home" || location.pathname === "/browse") return
-    setNavLoading(true)
+    if (location.pathname === "/home" || location.pathname === "/browse")
+      return;
+    setNavLoading(true);
     setTimeout(() => {
-      navigate("/")
-      setNavLoading(false)
-    }, 400) 
-  }
+      navigate("/");
+      setNavLoading(false);
+    }, 400);
+  };
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -52,28 +53,25 @@ const Header = () => {
       <div className="flex h-screen items-center justify-center bg-black text-white">
         <span className="loading loading-spinner loading-xl"></span>
       </div>
-    )
+    );
   }
 
   return (
     <header
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 sm:px-10 py-4 sm:py-6 z-30 transition-colors duration-300 ${
-        isScrolled
-          ? "bg-black"
-          : "bg-transparent"
+        isScrolled ? "bg-black" : "bg-transparent"
       }`}
     >
       {/* Left: Logo & Hamburger */}
       <div className="flex items-center flex-shrink-0 gap-2 sm:gap-8">
         {/* Netflix Logo */}
-        
-          <img
-            src="/Netflix_2015_logo.svg.png"
-            alt="Netflix Logo"
-            className="h-7 sm:h-9 w-auto ml-0"
-            onClick={handleLogoClick}
-          />
-        
+
+        <img
+          src="/Netflix_2015_logo.svg.png"
+          alt="Netflix Logo"
+          className="h-7 sm:h-9 w-auto ml-0"
+          onClick={handleLogoClick}
+        />
 
         {/* Hamburger for mobile */}
         {user && (
@@ -261,25 +259,23 @@ const Header = () => {
           </div>
           {/* Mobile right icons */}
           <div className="flex sm:hidden items-center gap-4">
-            <button className="text-white" aria-label="Search">
+            <button
+              className="text-white"
+              aria-label="Search"
+              onClick={() => navigate("/search")}
+            >
+              {/* 🔍 Icon */}
               <svg
                 viewBox="0 0 24 24"
                 width="26"
                 height="26"
-                data-icon="MagnifyingGlassMedium"
-                data-icon-id=":r0:"
-                aria-hidden="true"
-                className="search-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                role="img"
+                fill="currentColor"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10ZM15.6177 17.0319C14.078 18.2635 12.125 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10C19 12.125 18.2635 14.078 17.0319 15.6177L22.7071 21.2929L21.2929 22.7071L15.6177 17.0319Z"
-                  fill="currentColor"
-                ></path>
+                />
               </svg>
             </button>
             <button className="text-white" aria-label="Notifications">

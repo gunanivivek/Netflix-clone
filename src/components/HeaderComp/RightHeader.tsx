@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AvatarMenu from "./AvatarMenu";
 
 const HeaderRight = () => {
+  const navigate=  useNavigate(); 
   return (
     <div className="flex items-center gap-6 text-gray-300">
-      <button className="hover:text-white transition">
+      <button className="hover:text-white transition " onClick={() => navigate("/search")}>
         <svg
           viewBox="0 0 24 24"
           width="26"

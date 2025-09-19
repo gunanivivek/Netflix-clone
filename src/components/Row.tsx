@@ -36,7 +36,9 @@ const Row: React.FC<Props> = ({ title, fetchUrl }) => {
         const res = await tmdb.get(fetchUrl);
         setMovies(res.data.results || []);
       } catch (error) {
-        console.error("Error fetching movies: ", error);
+        console.error("Error fetching row:", error);
+        setMovies([]);
+        // return <p className="text-gray-400">No results found.</p>;
       } finally {
         setLoading(false);
       }
@@ -83,39 +85,48 @@ const Row: React.FC<Props> = ({ title, fetchUrl }) => {
               transform: `translateX(-${index * (100 / 6)}%)`,
             }}
           >
-            {loading
-              ? Array.from({ length: 6 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-full h-[140px] rounded-md bg-neutral-800 animate-pulse"
-                  />
-                ))
-              : movies.map((movie) => (
-                  <div
-                    key={movie.id}
-                    className="cursor-pointer relative"
-                    onClick={() => {
-                      if (movie.backdrop_path || movie.poster_path) {
-                        setSelectedMovie({
-                          id: movie.id,
-                          type: movie.media_type || "movie",
-                        });
-                      }
-                    }}
-                  >
-                    {movie.backdrop_path || movie.poster_path ? (
-                      <img
-                        src={`${IMAGE_BASE_URL}${
-                          movie.backdrop_path || movie.poster_path
-                        }`}
-                        alt={movie.title || "Movie poster"}
-                        className="w-full h-[140px] object-cover rounded-md"
-                      />
-                    ) : (
-                      <div className="skeleton h-[140px] w-full rounded-md"></div>
-                    )}
-                  </div>
-                ))}
+            {loading ? (
+              // Skeleton loader
+              Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="w-full h-[140px] rounded-md bg-neutral-800 animate-pulse"
+                />
+              ))
+            ) : movies.length > 0 ? (
+              // Movies grid
+              movies.map((movie) => (
+                <div
+                  key={movie.id}
+                  className="cursor-pointer relative"
+                  onClick={() => {
+                    if (movie.backdrop_path || movie.poster_path) {
+                      setSelectedMovie({
+                        id: movie.id,
+                        type: movie.media_type || "movie",
+                      });
+                    }
+                  }}
+                >
+                  {movie.backdrop_path || movie.poster_path ? (
+                    <img
+                      src={`${IMAGE_BASE_URL}${
+                        movie.backdrop_path || movie.poster_path
+                      }`}
+                      alt={movie.title || "Movie poster"}
+                      className="w-full h-[140px] object-cover rounded-md"
+                    />
+                  ) : (
+                    <div className="skeleton h-[140px] w-full rounded-md"></div>
+                  )}
+                </div>
+              ))
+            ) : (
+              // Fallback
+              <div className="w-full py-10 text-center text-gray-400">
+                <p>No search results found</p>
+              </div>
+            )}
           </div>
         </div>
 

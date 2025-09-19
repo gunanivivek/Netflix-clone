@@ -18,6 +18,7 @@ import Devices from "@/pages/AvatarPages/Devices";
 import Profiles from "@/pages/AvatarPages/Profiles";
 import Password from "@/pages/AfterLogin/Password";
 import ForgotPassword from "@/pages/AuthPages/ForgotPassword";
+import SearchResults from "@/pages/AfterLogin/SearchResults";
 
 
 const AppRoutes: React.FC = () => {
@@ -57,6 +58,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/profile" element={<Profiles />} />
           <Route path="/password" element={<Password />} />
           <Route path="/resetpassword" element={<ForgotPassword />} />
+           <Route path="/search" element={<SearchResults />} />
           <Route path="*" element={<Navigate to="/browse" replace />} />
         </Route>
       )}
